@@ -1,6 +1,3 @@
-
-
-
 const User = require("../models/User");
 const ErrorHandler = require("../utils/errorHandler");
 const sendToken = require("../utils/jwtToken");
@@ -55,7 +52,7 @@ exports.newUser = async (req, res, next) => {
       role,
       email,
       password,
-      store : {
+      store: {
         storeId: storeId,
         name: storeName,
       },
@@ -65,7 +62,7 @@ exports.newUser = async (req, res, next) => {
       },
     };
     if (role === 'Employee' && storeId && storeName) {
-      userData.store =  {
+      userData.store = {
         storeId: storeId,
         name: storeName,
       }
@@ -95,7 +92,7 @@ exports.deleteUser = async (req, res, next) => {
       new ErrorHandler(`User does not found with id: ${req.params.id}`)
     );
   }
-
+  
   // Remove avatar from cloudinary
 
   const image_id = user.avatar.public_id;
@@ -131,7 +128,7 @@ exports.updateUser = async (req, res, next) => {
 
   try {
     const user = await User.findById(req.params.id);
-    
+
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -167,7 +164,7 @@ exports.updateUser = async (req, res, next) => {
       newUserData.password = hashedPassword;
     }
 
-   
+
 
     if (avatar !== '') {
       // Delete the previous avatar
