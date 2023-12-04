@@ -4,7 +4,6 @@ const errorMiddleware = require("./middlewares/error");
 const auth = require("./routes/auth");
 const store = require("./routes/store");
 const product = require("./routes/product");
-
 const cors = require('cors');
 const app = express();
 
