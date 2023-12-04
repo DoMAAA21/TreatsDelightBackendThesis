@@ -4,6 +4,7 @@ const errorMiddleware = require("./middlewares/error");
 const auth = require("./routes/auth");
 const store = require("./routes/store");
 const product = require("./routes/product");
+const order = require("./routes/order");
 
 const cors = require('cors');
 const app = express();
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use("/api/v1", auth);
 app.use("/api/v1", store);
 app.use("/api/v1", product);
+app.use("/api/v1", order);
 
 app.use(errorMiddleware);
 
